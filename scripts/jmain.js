@@ -3,7 +3,7 @@ var notes=[],
 	addNoteForm=$addNote.find('.header-form'),
 	$notes=$('.note-container'),
 	noteTitle=addNoteForm.find('input[name="note_title"]'),
-	noteContent=addNoteForm.find('textarea[name="note_content"]')
+	noteContent=addNoteForm.find('textarea[name="note_content"]');
 
 var cnt=0;
 function appendSingleNote(data){
@@ -29,6 +29,7 @@ function storeNote(data){
 
 
 function init(){
+	console.log("rerere");
 	if(!!window.localStorage.getItem('notes')){
 
 		notes=JSON.parse(window.localStorage.getItem('notes'));
@@ -38,7 +39,15 @@ function init(){
 		alert('null');
 		notes=[];
 	}
+
+	var i;
+	for (i=0;i<notes.length;i++)
+	{
+		console.log("ereree");
+		appendSingleNote(notes[i]);
+	}
 }
+init();
 
 addNoteForm.on('submit',function(e){
 	e.preventDefault();
